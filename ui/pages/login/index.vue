@@ -116,8 +116,13 @@ export default {
   methods : {
     tokenValidate(){
       verifyService.verify(this.tokenInput).then(resp => {
-        console.log("your verify fff");
-        console.log(resp);
+        if(resp.statusCode === 200){
+          this.$router.push("/academic");
+        }else if(resp.stat === 401){
+          saxNotifications.error("Hatalı bir token ile giriş deniyorsunuz.");
+        }else{
+          saxNotifications.error("Girmiş olduğunuz token ile sisteme erişilemedi.");
+        }
       }).catch(()=> {
         saxNotifications.error("Girmiş olduğunuz token ile sisteme erişilemedi.");
       })

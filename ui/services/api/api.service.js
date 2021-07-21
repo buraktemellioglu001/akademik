@@ -54,7 +54,7 @@ const ApiService = {
         .catch(err =>{
 
 
-          if(err.response.status === 401){
+          if(err && err.response && err.response.statusCode && err.response.status === 401){
             window.location.href = "/login"
 
           }

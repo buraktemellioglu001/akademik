@@ -8,6 +8,10 @@ const saxLoading = {
       text: text
     });
   }
+  ,
+  loadingClose(loading){
+    loading.close() ;
+  }
 }
 
 export default saxLoading;

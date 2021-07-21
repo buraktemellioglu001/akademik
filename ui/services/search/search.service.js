@@ -3,6 +3,8 @@ const sURL = "Academic/SearchWId";
 
 const searchService = {
   searchWID(id){
-    return ApiService.getBearer("")
+    return ApiService.getBearer(`${sURL}?id=${id}`);
   }
 }
+
+export default searchService;

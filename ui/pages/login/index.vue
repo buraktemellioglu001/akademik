@@ -104,6 +104,7 @@
 
 <script>
 import saxLoading from "@/plugins/saxLoading";
+
 import verifyService from "@/services/verify/verify.service";
 import saxNotifications from "~/plugins/saxNotifications";
 export default {
@@ -120,7 +121,10 @@ export default {
           this.$router.push("/academic");
         }else if(resp.stat === 401){
           saxNotifications.error("Hatalı bir token ile giriş deniyorsunuz.");
-        }else{
+        }
+        else if(resp.statusCode == 429)
+          saxNotifications.error("Publons tarafında günlük api kullanım limitini aştınız.");
+        else{
           saxNotifications.error("Girmiş olduğunuz token ile sisteme erişilemedi.");
         }
       }).catch(()=> {

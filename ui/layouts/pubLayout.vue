@@ -75,13 +75,18 @@
                     </a></div>
 
                   </li>
+                  <li style="float: right">
+                    <div><a class="button neutral register-link" @click.prevent="doLogOut">
+                      Çıkış
+                    </a></div>
+                  </li>
 
-
-                  <li class="active align-register-header-menu-right">
+                  <li style="float:right">
                     <div><a class="button positive register-link" @click.prevent="underConstruction">
                       İşlemler
                     </a></div>
                   </li>
+
 
                 </ul>
               </div>
@@ -228,11 +233,17 @@
 
 <script>
 import saxNotifications from "../plugins/saxNotifications";
+import {destroyToken} from "../services/jwt/jwt.service";
 const underConstructionMessage = "Bu kısım yapım aşamasındadır.";
+
 export default{
   methods :{
     underConstruction(){
       saxNotifications.error(underConstructionMessage);
+    },
+    doLogOut(){
+      destroyToken();
+      this.$router.push("/login");
     }
   }
 }

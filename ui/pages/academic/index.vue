@@ -13,44 +13,62 @@
             <vs-button color="primary" @click="academicanSearch" type="filled">Arama Yap</vs-button>
           </div>
         </div>
-        <div class="researcher-profile-page-container">
+        <div v-if="foundedResearcher" class="researcher-profile-page-container">
           <div class="researcher-profile-page-header">
             <div class="white-box-with-light-shadow">
               <div class="gradient-bar"></div>
               <div class="researcher-card-container"><img class="researcher-card-photo"
-                                                          src="https://publons.com/media/thumbs/academic/photos/f410a8b2ac72453e92a8fb04d4889761.jpg.200x200_q95_crop_detail_upscale.jpg"
-                                                          alt="Baloglu">
+                                                          :src="foundedResearcher.photo"
+                                                          :alt="foundedResearcher.publishing_name">
                 <div class="researcher-card-header">
                   <div class="researcher-card-names"><h2 class="margin-right-md margin-bottom-none"
-                                                         title="baloglu,baloğlu,Baloğlu">Baloglu</h2>
-                    <div class="researcher-card-alt-names margin-top-xs"><span class="researcher-card-alt-name">"baloglu"</span><a
-                      class="show-more-aliases-button" href="#">Show more</a></div>
+                                                         :title="foundedResearcher.publishing_name">
+                    {{ this.foundedResearcher.publishing_name }}</h2>
+                    <div class="researcher-card-alt-names margin-top-xs"><span
+                      class="researcher-card-alt-name">{{ this.foundedResearcher.publishing_name }}</span>
+                      <vs-button>Detayları Yükle</vs-button>
+                    </div>
+
                   </div>
-                  <div class="researcher-card-header-researcher-id"><p
-                    class="researcher-id-widget light-bar-left padding-left-sm"><b class="large">Web of Science
-                    ResearcherID</b>&nbsp;<a href=""
-                                             title="The Web of Science ResearcherID links a researcher's publications across all Web of Science Group products, including Web of Science, Publons, and InCites. A researcher can link their publications across all of these products by adding them to their Publons profile."><i
-                    class="material-icons material-icons-xs inline"></i></a><br><a class="very-dark-gray-link"
-                                                                                    href="/researcher/E-5832-2014/"
-                                                                                    title="Copy and share this profile's URL"><span>E-5832-2014</span></a>
-                  </p></div>
+                  <div class="researcher-card-header-researcher-id">
+                    <p class="researcher-id-widget light-bar-left padding-left-sm"><b class="large">Publons  ID</b>&nbsp;<a
+                                                                                                                                      title="Publons academic uygulamasındaki ID değeri"><i
+                      class="material-icons material-icons-xs inline"></i></a><br>
+                      <span>{{this.foundedResearcher.ids.id}}</span>
+                    </p>
+                    <hr>
+                    <p class="researcher-id-widget light-bar-left padding-left-sm"><b class="large">Publons Researcher ID</b>&nbsp;<a
+                                               title="Publons academic uygulamasındaki Researcher DI değeri"><i
+                      class="material-icons material-icons-xs inline"></i></a><br><span>{{this.foundedResearcher.ids.rid}}</span>
+                    </p>
+                    <hr>
+                    <p class="researcher-id-widget light-bar-left padding-left-sm"><b class="large">Unique ID (truid)</b>&nbsp;<a
+                                                                                                                                  title="Publons academic uygulamasındaki TRUID değeri"><i
+                      class="material-icons material-icons-xs inline"></i></a><br><a class="very-dark-gray-link"
+
+                                                                                      title="Copy and share this profile's URL"><span>{{this.foundedResearcher.ids.truid}}</span></a>
+                    </p>
+
+                  </div>
+
+
                 </div>
                 <div class="researcher-card-badges"></div>
                 <div class="researcher-card-institution"></div>
                 <div class="researcher-card-metrics left-bar-figures">
                   <div class="left-bar-figure" title="All publications, including those not indexed in Web of Science">
                     <h5>Publications</h5>
-                    <p>42</p></div>
+                    <p>-</p></div>
                   <div class="left-bar-figure" title="Total citations from the Web of Science Core Collection">
                     <div class="left-bar-figure-loading-indicator loadingStats" style="display: none;"></div>
                     <div class="left-bar-figure-loading loadingStats" style="display: none;"></div>
                     <h5>Total times cited</h5>
-                    <p class="researcher-card-total-citations-val">581</p></div>
+                    <p class="researcher-card-total-citations-val">-</p></div>
                   <div class="left-bar-figure left-bar-figure-large" title="Web of Science h-index">
                     <div class="left-bar-figure-loading-indicator loadingStats" style="display: none;"></div>
                     <div class="left-bar-figure-loading loadingStats" style="display: none;"></div>
                     <h5>H-index</h5>
-                    <p class="researcher-card-h-index-val">15<a target="_blank"
+                    <p class="researcher-card-h-index-val">-<a target="_blank"
                                                                 href="https://publons.freshdesk.com/solution/articles/12000052051"
                                                                 class="left-bar-figure-help-icon"
                                                                 title="Click for details on how this is calculated and guidance on how to use the h-index responsibly.">&nbsp;<i
@@ -59,51 +77,7 @@
               </div>
             </div>
           </div>
-          <nav class="researcher-profile-page-navigation">
-            <ol class="researcher-profile-page-navigation-links affix-top" style="">
-              <li><a class="researcher-profile-page-navigation-link researcher-profile-page-backbone-link active"
-                     href="/researcher/1511864/baloglu/" data-route="summary"><i
-                class="researcher-profile-page-navigation-link-icon material-icons">dashboard</i><span
-                class="researcher-profile-page-navigation-link-text" id="summary">Summary</span></a></li>
-              <li><a class="researcher-profile-page-navigation-link researcher-profile-page-backbone-link"
-                     href="/researcher/1511864/baloglu/metrics/" data-route="metrics"><i
-                class="researcher-profile-page-navigation-link-icon material-icons">insert_chart</i><span
-                class="researcher-profile-page-navigation-link-text" id="metrics">Metrics</span></a></li>
-              <li><a class="researcher-profile-page-navigation-link researcher-profile-page-backbone-link"
-                     href="/researcher/1511864/baloglu/publications/" data-route="publications"><i
-                class="researcher-profile-page-navigation-link-icon material-icons">view_list</i><span
-                class="researcher-profile-page-navigation-link-text" id="publications">Publications</span></a></li>
-            </ol>
-            <div class="researcher-profile-page-navigation-dropdown form-component dropdown-field">
-              <div class="textfield right-control float-label">
-                <div class="html-dropdown-input-text"><a class="researcher-profile-page-navigation-link"
-                                                         data-route="summary"><i
-                  class="researcher-profile-page-navigation-link-icon material-icons">dashboard</i><span
-                  class="researcher-profile-page-navigation-link-text">Summary</span></a></div>
-                <input id="" name="" type="hidden" value="summary"><label for=""></label><span
-                class="placeholder"></span>
-                <div class="dropdown-arrow" tabindex="">
-                  <div></div>
-                </div>
-                <div class="dropdown-box"><input class="focus-helper" type="text">
-                  <div class="dropdown-box-content">
-                    <div><p data-value="summary" class="dropdown-content-text "><a
-                      class="researcher-profile-page-navigation-link active" data-route="summary"><i
-                      class="researcher-profile-page-navigation-link-icon material-icons">dashboard</i><span
-                      class="researcher-profile-page-navigation-link-text">Summary</span></a></p></div>
-                    <div><p data-value="metrics" class="dropdown-content-text "><a
-                      class="researcher-profile-page-navigation-link" data-route="metrics"><i
-                      class="researcher-profile-page-navigation-link-icon material-icons">insert_chart</i><span
-                      class="researcher-profile-page-navigation-link-text">Metrics</span></a></p></div>
-                    <div><p data-value="publications" class="dropdown-content-text "><a
-                      class="researcher-profile-page-navigation-link" data-route="publications"><i
-                      class="researcher-profile-page-navigation-link-icon material-icons">view_list</i><span
-                      class="researcher-profile-page-navigation-link-text">Publications</span></a></p></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </nav>
+
           <div class="researcher-profile-page-content">
             <div class="researcher-profile-summary-container">
               <div class="researcher-profile-summary-researcher-summary white-box-with-light-shadow">
@@ -472,21 +446,29 @@ export default {
 
 
   },
-  data(){
-   return {
-     academicanId : null
-   }
+  data() {
+    return {
+      academicanId: ""
+
+      , foundedResearcher:false
+    }
   },
   methods: {
-    academicanSearch(){
-      if(!this.academicanId)
+    academicanSearch() {
+      if (!this.academicanId)
         saxNotifications.error(fieldCannotBeNull);
       else
-        searchService.searchWID(this.academicanId).then((resp)=> {
-          console.log("successfully searched");
+        searchService.searchWID(this.academicanId).then((resp) => {
+          console.log("your resp");
           console.log(resp);
+          if (!resp.isCompletedSuccessfully) {
+            saxNotifications.error(`${this.academicanId} ID li araştırmacı publons üzerinde bulunamadı , lütfen kontrol edip tekrar deneyiniz.`)
+          } else {
+            this.foundedResearcher = resp.result;
+            saxNotifications.success(`${this.academicanId} ID li araştırmacı bilgileri başarı ile getirildi.`);
+          }
         })
-   }
+    }
   }
 }
 </script>

@@ -66,7 +66,6 @@ const ApiService = {
     });
   },
 
-
   post(resource, params) {
     return new Promise((resolve, reject) => {
       Vue.axios

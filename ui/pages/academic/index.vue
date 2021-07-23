@@ -31,22 +31,28 @@
 
                   </div>
                   <div class="researcher-card-header-researcher-id">
-                    <p class="researcher-id-widget light-bar-left padding-left-sm"><b class="large">Publons  ID</b>&nbsp;<a
-                                                                                                                                      title="Publons academic uygulamasındaki ID değeri"><i
+                    <p class="researcher-id-widget light-bar-left padding-left-sm"><b class="large">Publons ID</b>&nbsp;<a
+                      title="Publons academic uygulamasındaki ID değeri"><i
                       class="material-icons material-icons-xs inline"></i></a><br>
-                      <span>{{this.foundedResearcher.ids.id}}</span>
+                      <span>{{ this.foundedResearcher.ids.id }}</span>
                     </p>
                     <hr>
-                    <p class="researcher-id-widget light-bar-left padding-left-sm"><b class="large">Publons Researcher ID</b>&nbsp;<a
-                                               title="Publons academic uygulamasındaki Researcher DI değeri"><i
-                      class="material-icons material-icons-xs inline"></i></a><br><span>{{this.foundedResearcher.ids.rid}}</span>
+                    <p class="researcher-id-widget light-bar-left padding-left-sm"><b class="large">Publons Researcher
+                      ID</b>&nbsp;<a
+                      title="Publons academic uygulamasındaki Researcher DI değeri"><i
+                      class="material-icons material-icons-xs inline"></i></a><br><span>{{
+                        this.foundedResearcher.ids.rid
+                      }}</span>
                     </p>
                     <hr>
-                    <p class="researcher-id-widget light-bar-left padding-left-sm"><b class="large">Unique ID (truid)</b>&nbsp;<a
-                                                                                                                                  title="Publons academic uygulamasındaki TRUID değeri"><i
+                    <p class="researcher-id-widget light-bar-left padding-left-sm"><b class="large">Unique ID
+                      (truid)</b>&nbsp;<a
+                      title="Publons academic uygulamasındaki TRUID değeri"><i
                       class="material-icons material-icons-xs inline"></i></a><br><a class="very-dark-gray-link"
 
-                                                                                      title="Copy and share this profile's URL"><span>{{this.foundedResearcher.ids.truid}}</span></a>
+                                                                                      title="Copy and share this profile's URL"><span>{{
+                        this.foundedResearcher.ids.truid
+                      }}</span></a>
                     </p>
 
                   </div>
@@ -68,11 +74,7 @@
                     <div class="left-bar-figure-loading-indicator loadingStats" style="display: none;"></div>
                     <div class="left-bar-figure-loading loadingStats" style="display: none;"></div>
                     <h5>H-index</h5>
-                    <p class="researcher-card-h-index-val">-<a target="_blank"
-                                                                href="https://publons.freshdesk.com/solution/articles/12000052051"
-                                                                class="left-bar-figure-help-icon"
-                                                                title="Click for details on how this is calculated and guidance on how to use the h-index responsibly.">&nbsp;<i
-                      class="material-icons material-icons-xs inline"></i></a></p></div>
+                    <p class="researcher-card-h-index-val">-</p></div>
                 </div>
               </div>
             </div>
@@ -81,17 +83,14 @@
           <div class="researcher-profile-page-content">
             <div class="researcher-profile-summary-container">
               <div class="researcher-profile-summary-researcher-summary white-box-with-light-shadow">
-                <div class="researcher-profile-bio"><h3>Research Fields</h3>
-                  <p class="researcher-profile-research-fields"><a href="/researcher/?research_field=11890"
-                                                                   class="button small autowidth">counseling</a><a
-                    href="/researcher/?research_field=14481" class="button small autowidth">Educational
-                    Measurement</a><a href="/researcher/?research_field=390" class="button small autowidth">Educational
-                    Psychology</a><a href="/researcher/?research_field=71492" class="button small autowidth">Education
-                    &amp; Educational Research</a><a href="/researcher/?research_field=577908"
-                                                     class="button small autowidth">gifted and talented</a><a
-                    href="/researcher/?research_field=3604" class="button small autowidth">Gifted Education</a><a
-                    href="/researcher/?research_field=1029" class="button small autowidth">Psychology</a></p>
-                  <div class="researcher-profile-bio-expanded-content" style="display: none;"><h3>Identifiers</h3>
+                <div class="researcher-profile-bio"><h3>Institutions </h3>
+                  <p class="researcher-profile-research-fields">
+                    <a v-for="inst in foundedResearcher.affiliations.institutions"
+                       v-key="inst.ids.id"
+                       class="button small autowidth">counseling</a>
+
+                  </p>
+                  <div class="researcher-profile-bio-expanded-content" style="display: none;"><h3>{{inst.name}}</h3>
                     <ul>
                       <li><b>Web of Science ResearcherID</b><a
                         title="The Web of Science ResearcherID links a researcher's publications across all Web of Science Group products, including Web of Science, Publons, and InCites. A researcher can link their publications across all these products by adding them to their Publons profile."><i
@@ -120,10 +119,7 @@
                     </ul>
                   </div>
                 </div>
-                <div class="researcher-profile-expand-button collapse-bar"><p class="collapse-bar-full"
-                                                                              style="display: none;">- Hide institutions
-                  &amp; awards</p>
-                  <p class="collapse-bar-collapsed">+ View all institutions &amp; awards</p></div>
+
               </div>
               <div class="researcher-profile-summary-publications white-box-with-light-shadow">
                 <div class="paginated-list publication-list" style="display: block;">
@@ -450,7 +446,7 @@ export default {
     return {
       academicanId: ""
 
-      , foundedResearcher:false
+      , foundedResearcher: false
     }
   },
   methods: {
